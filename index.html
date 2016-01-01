@@ -2,7 +2,7 @@
 <html>
 <head>
 
-	<title></title>
+	<title>Comparision between JavaScript and jQuery</title>
     <style>
         /* Prevent the text contents of draggable elements from being selectable. */
         [draggable] {
@@ -31,7 +31,43 @@
         text-align: center;
         cursor: move;
         }
-        .column header {
+        .source-box {
+        height: 200px;
+        width: 300px;
+        float: left;
+        border: 2px solid #666666;
+        background-color: #ccc;
+        margin-right: 5px;
+        -webkit-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 3px #000;
+        -ms-box-shadow: inset 0 0 3px #000;
+        box-shadow: inset 0 0 3px #000;
+        text-align: center;
+				margin-bottom: 10px;
+        }
+        .source {
+        width: 294px;
+        float: left;
+        border: 2px solid #666666;
+        background-color: #ccc;
+        margin-right: 5px;
+        -webkit-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        -webkit-box-shadow: inset 0 0 3px #000;
+        -ms-box-shadow: inset 0 0 3px #000;
+        box-shadow: inset 0 0 3px #000;
+        text-align: left;
+        cursor: move;
+        margin-bottom: 5px;
+        padding: 1px 1px;
+				min-height: 18px;
+        }
+        .column header, .source-box header {
         color: #fff;
         text-shadow: #000 0 1px;
         box-shadow: 5px;
@@ -57,17 +93,36 @@
 .column.over {
   border: 2px dashed #000;
 }
+.source.over {
+  border: 2px dashed #000;
+}
 </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="dragNdrop.js"></script>
 
 </head>
 <body  onload ='addevents()'>
-    <div id="columns">
-        <div class="column" draggable="true"><header>A</header></div>
-        <div class="column" draggable="true"><header>B</header></div>
-        <div class="column" draggable="true"><header>C</header></div>
-    </div>
-    
+	<h1>Comparision between JavaScript and jQuery</h1>
+    <div style = 'width:100%;float:left;'>
+			<div class = 'source-box'>
+				<header> Statements</header>
+        <div class="source" id ='place1' draggable="true"> It is a popular scripting language.</div>
+        <div class="source" id ='place2' draggable="true"> It is framework.</div>
+				<div class="source" id ='place3'draggable="true"> It is a combination of ECMA Script and Document Object Model (DOM).</div>
+				<div class="source" id ='place4'draggable="true"> It has Document Object Model (DOM).</div>
+    	</div>
+		</div>
+		<div style = 'width:100%;float:left;'>
+    	<div class = 'source-box'>
+				<header> JavaScript</header>
+        <div class="source" id ='place5' draggable="true"> Option</div>
+        <div class="source" id ='place6'draggable="true"> Option</div>
+    	</div>
+			<div class = 'source-box'>
+				<header> jQuery</header>
+        <div class="source" id ='place7' draggable="true"> Option</div>
+        <div class="source" id ='place8' draggable="true"> Option</div>
+    	</div>
+		</div>
 </body>
 </html>

@@ -1,8 +1,14 @@
+var dragSrcEl = null;
 
 function handleDragStart(e) {
-this.style.opacity = '0.4';  // this / e.target is the source node.
-}
+  // Target (this) element is the source node.
+  this.style.opacity = '0.4';
 
+  dragSrcEl = this;
+
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('text/html', this.innerHTML);
+}
 function handleDragOver(e) {
 if (e.preventDefault) {
 e.preventDefault(); // Necessary. Allows us to drop.
@@ -45,21 +51,12 @@ this.style.opacity = '1';
 col.classList.remove('over');
 });
 }
-var dragSrcEl = null;
 
-function handleDragStart(e) {
-  // Target (this) element is the source node.
-  this.style.opacity = '0.4';
 
-  dragSrcEl = this;
-
-  e.dataTransfer.effectAllowed = 'move';
-  e.dataTransfer.setData('text/html', this.innerHTML);
-}
-var cols = document.querySelectorAll('#columns .column');
+var cols = document.querySelectorAll('.source');
 
 function addevents(){
-var cols = document.querySelectorAll('#columns .column');
+var cols = document.querySelectorAll('.source');
 console.log (cols);
 [].forEach.call(cols, function(col) {
 col.addEventListener('dragstart', handleDragStart, false);
