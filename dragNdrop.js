@@ -44,9 +44,18 @@ e.stopPropagation(); // stops the browser from redirecting.
     console.log (theDraggedElement);
     console.log (e.dataTransfer.getData('text/plain'));
     //add it to the parent of drop element
-    e.target.parentNode.appendChild(theDraggedElement);
-    console.log( e.target.parentNode.firstChild);
 
+    if (e.target.children.length > 0){
+      console.log ('Has Child Node If yes')
+      console.log (e.target.hasChildNodes());
+      e.target.appendChild(theDraggedElement);
+    } else {
+      console.log ('Has Child Node If No')
+      e.target.parentNode.appendChild(theDraggedElement);
+
+    }
+    console.log('FirstChild');
+    console.log( e.target.parentNode.firstChild);
     // Set the source column's HTML to the HTML of the column we dropped on.
     //dragSrcEl.innerHTML = this.innerHTML;
     //this.innerHTML = e.dataTransfer.getData('text/plain');
@@ -58,20 +67,34 @@ return false;
 function handleDragEnd(e) {
 // this/e.target is the source node.
 this.style.opacity = '1';
-[].forEach.call(cols, function (col) {
+console.log('inside drangend');
+e.target.classList.remove('over');
+e.target.parentNode.classList.remove('over');
+[].forEach.call(colsbox, function (col) {
   console.log(col);
-col.classList.remove('over');
+
 });
+
 }
 
 
-var cols = document.querySelectorAll('.source');
+var colsbox = document.querySelectorAll('.source-box');
 
 function addevents(){
 var cols = document.querySelectorAll('.source');
 console.log (cols);
 [].forEach.call(cols, function(col) {
 col.addEventListener('dragstart', handleDragStart, false);
+//col.addEventListener('dragenter', handleDragEnter, false)
+//col.addEventListener('dragover', handleDragOver, false);
+//col.addEventListener('dragleave', handleDragLeave, false);
+//col.addEventListener('drop', handleDrop, false);
+col.addEventListener('dragend', handleDragEnd, false);
+});
+
+var colsbox = document.querySelectorAll('.source-box');
+console.log (colsbox);
+[].forEach.call(colsbox, function(col) {
 col.addEventListener('dragenter', handleDragEnter, false)
 col.addEventListener('dragover', handleDragOver, false);
 col.addEventListener('dragleave', handleDragLeave, false);
